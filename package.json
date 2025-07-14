@@ -1,0 +1,24 @@
+{
+  "name": "MobileDesafio",
+  "type": "module",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^9.17.0",
+    "@wdio/appium-service": "^9.17.0",
+    "@wdio/cli": "^9.17.1",
+    "@wdio/local-runner": "^9.17.0",
+    "@wdio/mocha-framework": "^9.17.0",
+    "@wdio/spec-reporter": "^9.17.0",
+    "allure-commandline": "^2.34.1",
+    "appium": "^2.19.0",
+    "appium-uiautomator2-driver": "^4.2.5",
+    "chai": "^5.2.1"
+  },
+  "scripts": {
+    "test:android": "wdio ./config/wdio.android.conf.cjs",
+    "report": "allure generate allure-results --clean ; allure open",
+    "test:android:login": "wdio ./config/wdio.android.conf.cjs --spec ./test/specs/Login.e2e.js",
+    "test:android:signup": "wdio ./config/wdio.android.conf.cjs --spec ./test/specs/SignUp.e2e.js",
+    "test:android:specific": "wdio ./config/wdio.android.conf.cjs --spec",
+    "list:specs": "node -e \"import('glob').then(m => m.default.sync('./test/specs/**/*.js').forEach(f => console.log(f)))\""
+  }
+}
