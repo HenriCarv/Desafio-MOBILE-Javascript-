@@ -1,6 +1,6 @@
-const { expect } = require('@wdio/globals')
-const LoginPage = require('../pageobjects/login.page')
-const HomePage = require('../pageobjects/home.page')
+import { expect } from '@wdio/globals';
+import LoginPage from '../pageobjects/login.page'
+import HomePage from '../pageobjects/home.page'
 
 describe('Login Feature', () => {
     it('you should receive an error message with an invalid login', async () => {

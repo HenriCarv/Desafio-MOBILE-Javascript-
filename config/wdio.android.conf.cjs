@@ -8,6 +8,7 @@ exports.config = {
     specs: [
         path.join(__dirname, '..', 'test', 'specs', '**', '*.js')
     ],
+    maxInstances: 1,
 
     capabilities: [{
         platformName: 'Android',
@@ -16,7 +17,6 @@ exports.config = {
         'appium:app': path.resolve(__dirname, '..', 'android.wdio.native.app.v1.0.8.apk'),
         'appium:noReset': false,
         'appium:fullReset': true
-        // Removido appPackage e appActivity para evitar conflito
     }],
 
     reporters: [

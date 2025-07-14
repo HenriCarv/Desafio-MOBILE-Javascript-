@@ -1,5 +1,5 @@
-const Page = require('./page');
-const allure = require('@wdio/allure-reporter').default;
+import Page from './page.js';
+import allure from '@wdio/allure-reporter';
 
 class FormPage extends Page {
     get inputField () { return $('~text-input') }
@@ -96,4 +96,4 @@ class FormPage extends Page {
     }
 }
 
-module.exports = new FormPage();
+export default new FormPage();
