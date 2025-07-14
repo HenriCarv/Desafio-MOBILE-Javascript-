@@ -114,7 +114,7 @@ class LoginPage extends Page {
         await browser.takeScreenshot();
     }
 
-    async validatErroMessage () {
+    async validatTheErroMessageEmail () {
         allure.addStep('Wait for Erro Email message');
         await this.textErroMessageEmail.waitForDisplayed({ timeout: 5000 });
         const text = await this.textErroMessageEmail.getText();
@@ -122,10 +122,12 @@ class LoginPage extends Page {
         console.log('Erro Email message:', text);
         await expect(this.textErroMessageEmail).toHaveText('Please enter a valid email address');
         await browser.takeScreenshot();
+    }
 
+    async validatTheErroMessagePassword() {
         allure.addStep('Wait for Erro password message');
         await this.textErroMessagePassword.waitForDisplayed({ timeout: 5000 });
-        const text2 = await this.textErroMessagePassword.getText();
+        const text = await this.textErroMessagePassword.getText();
         allure.addStep(`Validate Erro password message: ${text}`);
         console.log('Erro password message:', text);
         await expect(this.textErroMessagePassword).toHaveText('Please enter at least 8 characters');

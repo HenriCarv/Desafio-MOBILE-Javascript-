@@ -16,9 +16,7 @@
   },
   "scripts": {
     "test:android": "wdio ./config/wdio.android.conf.cjs",
-    "test:android:login": "wdio ./config/wdio.android.conf.cjs --spec ./test/specs/Login.e2e.js",
-    "test:android:signup": "wdio ./config/wdio.android.conf.cjs --spec ./test/specs/SignUp.e2e.js",
-    "test:android:specific": "wdio ./config/wdio.android.conf.cjs --spec",
+    "report": "allure generate allure-results --clean && allure open",
     "list:specs": "node -e \"import('glob').then(m => m.default.sync('./test/specs/**/*.js').forEach(f => console.log(f)))\""
   }
 }
