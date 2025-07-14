@@ -2,9 +2,30 @@
 
 Este projeto é um desafio mobile utilizando JavaScript, Chai e WebdriverIO.
 
-## Status da Build
+## Cobertura de Testes
 
-![CI/CD](https://github.com/{seu-usuario}/{seu-repositorio}/workflows/CI/CD/badge.svg)
+Nossa suite de testes cobre as seguintes funcionalidades principais do aplicativo:
+
+1. **Login**
+   - Login válido
+   - Login inválido (credenciais incorretas)
+
+2. **Cadastro (Sign Up)**
+   - Cadastro bem-sucedido
+   - Cadastro inválido (dados incorretos)
+
+3. **Navegação entre Telas**
+   - Mudança de telas no aplicativo
+
+4. **Preenchimento de Formulários**
+   - Preenchimento e submissão de formulários
+
+5. **WebView**
+   - Interação com elementos em WebView
+
+6. **Validações de Campos**
+   - Validação de campos de email
+   - Validação de campos de senha
 
 ## Tecnologias Utilizadas
 
