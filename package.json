@@ -16,7 +16,8 @@
   },
   "scripts": {
     "test:android": "wdio ./config/wdio.android.conf.cjs",
-    "report": "allure generate allure-results --clean && allure open",
+    "report": "allure generate allure-results --clean",
+    "reporlocal": "allure generate allure-results --clean && allure open",
     "list:specs": "node -e \"import('glob').then(m => m.default.sync('./test/specs/**/*.js').forEach(f => console.log(f)))\""
   }
 }
