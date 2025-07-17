@@ -1,5 +1,6 @@
 import Page from './page.js'
 import allure from '@wdio/allure-reporter';
+import { takeScreenshotAndAddToReport }  from '../utils/screenshotHelper'
 
 class HomePage extends Page {
     get buttonMenuToggle () { return $('~Toggle navigation bar') }
@@ -9,13 +10,13 @@ class HomePage extends Page {
     async clickWebViewMenuInternal () {
         allure.addStep('Click on Webview Menu Internal');
         await this.buttonMenuToggle.click();
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Click on Webview Menu Internal');
     }
 
     async clickDocsMenu () {
         allure.addStep('Click Docs Menu');
         await this.buttonDocsMenu.click();
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Click Docs Menu');
     }
 
     async validatTitle () {
@@ -25,7 +26,7 @@ class HomePage extends Page {
         allure.addStep(`Validate Title: ${text}`);
         console.log('Title:', text);
         await expect(this.textDocsTitle).toHaveText('Getting Started');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Validate Title');
     }
 
 }

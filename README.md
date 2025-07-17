@@ -69,6 +69,10 @@ npm run test:android
 
 Certifique-se de que o nome do dispositivo em `config/wdio.android.conf.cjs` corresponda ao seu emulador ou dispositivo físico.
 
+Para executar um teste específico:
+
+npm wdio config/wdio.android.conf.cjs --spec ./test/specs/Login.e2e.js
+
 ## Gerando Relatórios
 
 Para gerar e abrir o relatório Allure:
@@ -112,14 +116,16 @@ Desafio-MOBILE-Javascript
 │   │   ├── page.js
 │   │   ├── secure.page.js
 │   │   └── webview.page.js
-│   └── specs/
-│       ├── ChangeScreen.e2e.js
-│       ├── InvalidLogin.e2e.js
-│       ├── FillForm.e2e.js
-│       ├── InvalidSignUp.e2e.js
-│       ├── Login.e2e.js
-│       ├── SignUp.e2e.js
-│       └── WebView.e2e.js
+│   ├── specs/
+│   │   ├── ChangeScreen.e2e.js
+│   │   ├── InvalidLogin.e2e.js
+│   │   ├── FillForm.e2e.js
+│   │   ├── InvalidSignUp.e2e.js
+│   │   ├── Login.e2e.js
+│   │   ├── SignUp.e2e.js
+│   │   └── WebView.e2e.js
+│   └── utils/
+│       └── screenshotHelper.js
 ├── .gitignore
 ├── package.json
 ├── README.md

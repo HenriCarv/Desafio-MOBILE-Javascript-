@@ -1,4 +1,4 @@
-const { config } = require('../wdio.conf.cjs')
+const { config } = require('../wdio.conf.cjs');
 const path = require('path');
 const allure = require('allure-commandline');
 
@@ -23,8 +23,8 @@ exports.config = {
         'spec',
         ['allure', {
             outputDir: 'allure-results',
-            disableWebdriverStepsReporting: true,
-            disableWebdriverScreenshotsReporting: false,
+            disableWebdriverStepsReporting: false,
+            disableWebdriverScreenshotsReporting: false
         }]
     ],
 
@@ -39,11 +39,17 @@ exports.config = {
         console.log('🔧 Preparando ambiente de testes Android...');
     },
 
+    afterStep: async function (step, scenario, { error }) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
+    },
+
     onComplete: function () {
         console.log('📊 Gerando relatório Allure...');
         const generation = allure(['generate', 'allure-results', '--clean']);
         return new Promise((resolve, reject) => {
-            const generationTimeout = setTimeout(() => reject(new Error('❌ Falha ao gerar o relatório Allure')), 5000);
+            const generationTimeout = setTimeout(() => reject(new Error('❌ Falha ao gerar o relatório Allure')), 15000);
             generation.on('exit', function (exitCode) {
                 clearTimeout(generationTimeout);
                 if (exitCode !== 0) return reject(new Error('❌ Falha ao gerar o relatório Allure'));

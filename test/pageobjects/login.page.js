@@ -1,5 +1,6 @@
 import Page from './page.js';
 import allure from '@wdio/allure-reporter';
+import { takeScreenshotAndAddToReport }  from '../utils/screenshotHelper'
 
 class LoginPage extends Page {
     get inputUsername () { return $('~input-email') }
@@ -20,45 +21,45 @@ class LoginPage extends Page {
     async doTheLogin (username, password) {
         allure.addStep('Enter username');
         await this.inputUsername.setValue(username);
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Entered username');
 
         allure.addStep('Enter password');
         await this.inputPassword.setValue(password);
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Entered password');
     }
 
     async submitLogin () {
     allure.addStep('Click submit button');
         await this.buttonSubmit.click();
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Clicked submit button');
     }
 
     async createUser (username, password) {
         allure.addStep('Click SignUp');
         await this.buttonSignUp.click();
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Click SignUp');
 
         allure.addStep('Enter username');
         await this.inputUsername.setValue(username);
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Enter username');
 
         allure.addStep('Enter password');
         await this.inputPassword.setValue(password);
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Enter password');
 
         allure.addStep('Repeat password');
         await this.inputRepeatPassword.setValue(password);
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Repeat password');
 
         allure.addStep('Click submit button');
         await this.buttonSubmitSingUp.click();
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Click submit button');
     }
 
     async changeToLogin () {
         allure.addStep('Click Login');
         await this.buttonLogin.click();
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Click Login');
     }
 
     async validatTheLogin () {
@@ -68,7 +69,7 @@ class LoginPage extends Page {
         allure.addStep(`Validate login message: ${text}`);
         console.log('Login message:', text);
         await expect(this.popMessage).toHaveText('You are logged in!');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Validate login message');
     }
 
     async validatTheSingUp () {
@@ -78,10 +79,10 @@ class LoginPage extends Page {
         allure.addStep(`Validate login message: ${text}`);
         console.log('SignUp message:', text);
         await expect(this.popMessage).toHaveText('You successfully signed up!');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Validate SignUp message');
         allure.addStep('Click ok Message');
         await this.buttonOkMessage.click();
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Click ok Message');
     }
 
     async validatTheErroEmail () {
@@ -91,7 +92,7 @@ class LoginPage extends Page {
         allure.addStep(`Validate email Error message: ${text}`);
         console.log('email Error message:', text);
         await expect(this.buttonEmailErrorMessage).toHaveText('Please enter a valid email address');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('email Error message:');
     }
 
     async validatTheErroPassword () {
@@ -101,7 +102,7 @@ class LoginPage extends Page {
         allure.addStep(`Validate Password  Error message: ${text}`);
         console.log('Password  Error message:', text);
         await expect(this.buttonPasswordErrorMessage).toHaveText('Please enter at least 8 characters');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Password Error message:');
     }
 
     async validatTheErroRepeatPassword () {
@@ -111,7 +112,7 @@ class LoginPage extends Page {
         allure.addStep(`Validate Repeat Password  Error message: ${text}`);
         console.log('Repeat Password  Error message:', text);
         await expect(this.buttonRepeatPasswordErrorMessage).toHaveText('Please enter the same password');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Repeat Password Error message:');
     }
 
     async validatTheErroMessageEmail () {
@@ -121,7 +122,7 @@ class LoginPage extends Page {
         allure.addStep(`Validate Erro Email message: ${text}`);
         console.log('Erro Email message:', text);
         await expect(this.textErroMessageEmail).toHaveText('Please enter a valid email address');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Validate Erro Email message');
     }
 
     async validatTheErroMessagePassword() {
@@ -131,7 +132,7 @@ class LoginPage extends Page {
         allure.addStep(`Validate Erro password message: ${text}`);
         console.log('Erro password message:', text);
         await expect(this.textErroMessagePassword).toHaveText('Please enter at least 8 characters');
-        await browser.takeScreenshot();
+        await takeScreenshotAndAddToReport('Validate Erro password message');
     }
 }
 
